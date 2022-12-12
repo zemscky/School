@@ -73,6 +73,16 @@ public class StudentController {
     @Operation(summary = "Returns list students by age",
             tags = "student")
     public Collection<Student> getStudentsByAge(@PathVariable("age") int age) {
-        return this.studentService.getByAge(age);
+        return this.studentService.findByAge(age);
+    }
+
+    @GetMapping("/between-age")
+    @Operation(summary = "Returns list students by age limits")
+    public ResponseEntity<Collection<Student>> getStudentsByAgeLimits(@RequestParam(required = false) Integer minAge,
+                                                                      @RequestParam(required = false) Integer maxAge) {
+        if (minAge != null && maxAge != null) {
+            return ResponseEntity.ok(studentService.findByAgeBetween(minAge, maxAge));
+        }
+        return ResponseEntity.ok(studentService.getAllStudents());
     }
 }

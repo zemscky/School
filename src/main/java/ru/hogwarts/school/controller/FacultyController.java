@@ -61,7 +61,7 @@ public class FacultyController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<Collection<Faculty>> FindFaculty(@RequestParam(required = false) String name, @RequestParam(required = false) String color) {
+    public ResponseEntity<Collection<Faculty>> findFaculty(@RequestParam(required = false) String name, @RequestParam(required = false) String color) {
         return ResponseEntity.ok(facultyService.findFacultyByNameIgnoreCaseOrColorIgnoreCase(name, color));
     }
 }

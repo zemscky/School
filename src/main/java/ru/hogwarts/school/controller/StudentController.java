@@ -76,7 +76,7 @@ public class StudentController {
         return this.studentService.findByAge(age);
     }
 
-    @GetMapping("/between-age")
+    @GetMapping("/between-age") // GET http://localhost:8080/student/between-age
     @Operation(summary = "Returns list students by age limits")
     public ResponseEntity<Collection<Student>> getStudentsByAgeLimits(@RequestParam(required = false) Integer minAge,
                                                                       @RequestParam(required = false) Integer maxAge) {

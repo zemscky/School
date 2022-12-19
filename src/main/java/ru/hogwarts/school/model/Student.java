@@ -10,10 +10,11 @@ import java.util.Objects;
 public class Student {
     @Id
     @GeneratedValue
+    private long id;
     private String name;
     private int age;
-    private long id;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "faculty_id")
     @JsonBackReference
     private Faculty faculty;
@@ -21,10 +22,10 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int age, long id) {
+    public Student(Long id, String name, int age) {
+        this.id = id;
         this.name = name;
         this.age = age;
-        this.id = id;
     }
 
     @Override

@@ -14,9 +14,10 @@ import java.util.Objects;
 public class Faculty {
     @Id
     @GeneratedValue
+    private long id;
     private String name;
     private String color;
-    private long id;
+
     @OneToMany(mappedBy = "faculty")
     @JsonManagedReference
     private Collection<Student> students;

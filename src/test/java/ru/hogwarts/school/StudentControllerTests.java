@@ -49,7 +49,7 @@ class StudentTests {
         final int age = 10;
         final long id = 1;
 
-        Student student = new Student(id, name, age);
+        Student student = new Student();
 
         JSONObject studentObject = new JSONObject();
         studentObject.put("id", id);

@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
-public class StudentControllerTests {
+class StudentTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,19 +45,17 @@ public class StudentControllerTests {
 
     @Test
     public void testStudents() throws Exception {
-        final String name = "Scabbers";
+        final String name = "Rat";
         final int age = 10;
-        final long id = 1L;
+        final long id = 1;
 
-        Student student = new Student();
-        student.setId(id);
-        student.setName(name);
-        student.setAge(age);
+        Student student = new Student(id, name, age);
 
         JSONObject studentObject = new JSONObject();
         studentObject.put("id", id);
         studentObject.put("name", name);
         studentObject.put("age", age);
+
 
         when(studentRepository.save(any(Student.class))).thenReturn(student);
         when(studentRepository.findByAge(eq(age))).thenReturn(Collections.singleton(student));
@@ -104,4 +102,5 @@ public class StudentControllerTests {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
 }

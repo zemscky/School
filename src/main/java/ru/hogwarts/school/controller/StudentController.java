@@ -77,7 +77,8 @@ public class StudentController {
     }
 
     @GetMapping("/between-age") // GET http://localhost:8080/student/between-age
-    @Operation(summary = "Returns list students by age limits")
+    @Operation(summary = "Returns list students by age limits",
+            tags = "student")
     public ResponseEntity<Collection<Student>> getStudentsByAgeLimits(@RequestParam(required = false) Integer minAge,
                                                                       @RequestParam(required = false) Integer maxAge) {
         if (minAge != null && maxAge != null) {
@@ -85,4 +86,26 @@ public class StudentController {
         }
         return ResponseEntity.ok(studentService.getAllStudents());
     }
+
+    @GetMapping("/count")  // GET http://localhost:8080/student/count
+    @Operation(summary = "Returns students count",
+            tags = "student")
+    public ResponseEntity getStudentsCount() {
+        return ResponseEntity.ok(studentService.getStudentCount());
+    }
+
+    @GetMapping("/age/average")  // GET http://localhost:8080/student/age/average
+    @Operation(summary = "Returns students by average age",
+            tags = "student")
+    public ResponseEntity getStudentByAverageAge() {
+        return ResponseEntity.ok(studentService.getStudentByAverageAge());
+    }
+
+    @GetMapping("/lastFive")  // GET http://localhost:8080/student/lastFive
+    @Operation(summary = "Returns the last five students",
+            tags = "student")
+    public ResponseEntity<Collection<Student>> getTheLastFiveStudents() {
+        return ResponseEntity.ok(studentService.getTheLastFiveStudents());
+    }
+
 }

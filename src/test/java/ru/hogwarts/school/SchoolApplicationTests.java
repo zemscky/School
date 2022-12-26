@@ -57,17 +57,17 @@ class SchoolApplicationTests {
                 .isNotEmpty();
     }
 
-//    @Test
-//    public void deleteStudentByIdTest() throws Exception { // Delete student
-//        Student student = new Student();
-//        student.setName("Ron");
-//        student.setAge(16);
-//        long id = this.studentRepository.save(student).getId();
-//
-//        assertEquals(1, this.studentRepository.findAll().size());
-//        this.restTemplate.delete("http://localhost:" + port + "/student/" + id);
-//        assertTrue( studentRepository.findAll().isEmpty());
-//    }
+    @Test
+    public void deleteStudentByIdTest() throws Exception { // Delete student
+        Student student = new Student();
+        student.setName("Ron");
+        student.setAge(16);
+        long id = this.studentRepository.save(student).getId();
+
+        assertEquals(1, this.studentRepository.findAll().size());
+        this.restTemplate.delete("http://localhost:" + port + "/student/" + id);
+        assertTrue( studentRepository.findAll().isEmpty());
+    }
 
     @Test
     public void getAllStudentsTest() throws Exception {   // Returns all students

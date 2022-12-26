@@ -50,6 +50,10 @@
             <version>42.5.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>

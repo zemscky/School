@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog">
+
+    <changeSet id="1" author="Aleksei Zemscky">
+        <createIndex
+                tableName="student"
+                indexName="student_name_index">
+            <column>name</column>
+        </createIndex>
+    </changeSet>
+    <changeSet id="2" author="Aleksei Zemscky">
+        <createIndex tableName="faculty"
+                     indexName="faculty_name_color_index">
+            <column>name</column>
+            <column>color</column>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

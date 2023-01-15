@@ -61,7 +61,14 @@ public class FacultyController {
     }
 
     @GetMapping("/filter") // GET http://localhost:8080/faculty/filter
+    @Operation(summary = "Returns list faculty", tags = "faculty")
     public ResponseEntity<Collection<Faculty>> findFaculty(@RequestParam(required = false) String name, @RequestParam(required = false) String color) {
         return ResponseEntity.ok(facultyService.findFacultyByNameIgnoreCaseOrColorIgnoreCase(name, color));
+    }
+
+    @GetMapping("/filterLongNameFaculty") // GET http://localhost:8080/faculty/filterLongNameFaculty
+    @Operation(summary = "Returns the long name faculty", tags = "faculty")
+    public ResponseEntity<String>getTheLongNameFaculty(){
+        return ResponseEntity.ok(facultyService.getTheLongNameFaculty());
     }
 }

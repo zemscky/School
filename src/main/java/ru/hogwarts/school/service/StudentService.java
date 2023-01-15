@@ -83,7 +83,6 @@ public class StudentService {
                 .findAll()
                 .stream()
                 .map(s -> s.getName().toUpperCase())
-                .filter((s -> s.startsWith("A")))
                 .sorted()
                 .collect(Collectors.toList());
     }

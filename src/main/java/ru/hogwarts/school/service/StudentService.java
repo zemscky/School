@@ -96,4 +96,41 @@ public class StudentService {
                 .average()
                 .orElseThrow();
     }
+
+    public void getStudentInThread() {
+        List<Student> students = this.studentRepository.findAll();
+            System.out.println(students.get(0));
+            System.out.println(students.get(1));
+        new Thread(
+                () -> {
+            System.out.println(students.get(2));
+            System.out.println(students.get(3));
+        })
+                .start();
+        new Thread(
+                () -> {
+            System.out.println(students.get(4));
+            System.out.println(students.get(5));
+        })
+                .start();
+    }
+
+    public void getStudentInThreadSynchronously() {
+        List<Student> students = this.studentRepository.findAll();
+            printStudentSynchronously(students,0,1);
+        new Thread(
+                () -> {
+            printStudentSynchronously(students, 2,3);
+        })
+                .start();
+        new Thread(
+                () -> {
+            printStudentSynchronously(students,4,5);
+        })
+                .start();
+    }
+    public synchronized void printStudentSynchronously(List<Student> list, int index1, int index2) {
+        System.out.println(list.get(index1));
+        System.out.println(list.get(index2));
+    }
 }

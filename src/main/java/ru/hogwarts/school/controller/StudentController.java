@@ -123,4 +123,19 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getAverageAge());
     }
 
+    @GetMapping("/studentInThread")
+    @Operation(summary = "Returns list student int different thread",
+            tags = "student")
+    public void getStudentInThread() {
+        studentService.getStudentInThread();
+
+    }
+
+    @GetMapping("/studentInThreadSyn")
+    @Operation(summary = "Returns list student int different thread synchronously"
+            , tags = "student")
+    public void getStudentInThreadSynchronously() {
+        studentService.getStudentInThreadSynchronously();
+
+    }
 }

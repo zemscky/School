@@ -127,15 +127,13 @@ public class StudentController {
     @Operation(summary = "Returns list student int different thread",
             tags = "student")
     public void getStudentInThread() {
-        studentService.getStudentInThread();
-
+        this.studentService.getStudentInThread();
     }
 
     @GetMapping("/studentInThreadSyn")
     @Operation(summary = "Returns list student int different thread synchronously"
             , tags = "student")
     public void getStudentInThreadSynchronously() {
-        studentService.getStudentInThreadSynchronously();
-
+        this.studentService.getStudentInThreadSynchronously();
     }
 }

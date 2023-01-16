@@ -98,39 +98,34 @@ public class StudentService {
     }
 
     public void getStudentInThread() {
+        logger.debug("Was invoked method for get students in thread");
         List<Student> students = this.studentRepository.findAll();
-            System.out.println(students.get(0));
-            System.out.println(students.get(1));
-        new Thread(
-                () -> {
-            System.out.println(students.get(2));
-            System.out.println(students.get(3));
-        })
-                .start();
-        new Thread(
-                () -> {
-            System.out.println(students.get(4));
-            System.out.println(students.get(5));
-        })
-                .start();
+        System.out.println(students.get(0).getName());
+        System.out.println(students.get(1).getName());
+        new Thread(() -> {
+            System.out.println(students.get(2).getName());
+            System.out.println(students.get(3).getName());
+        }).start();
+        new Thread(() -> {
+            System.out.println(students.get(4).getName());
+            System.out.println(students.get(5).getName());
+        }).start();
     }
 
     public void getStudentInThreadSynchronously() {
+        logger.debug("Was invoked method for get the get students int thread synchronously");
         List<Student> students = this.studentRepository.findAll();
-            printStudentSynchronously(students,0,1);
-        new Thread(
-                () -> {
+        printStudentSynchronously(students, 0,1);
+        new Thread(() -> {
             printStudentSynchronously(students, 2,3);
-        })
-                .start();
-        new Thread(
-                () -> {
-            printStudentSynchronously(students,4,5);
-        })
-                .start();
+        }).start();
+        new Thread(() -> {
+            printStudentSynchronously(students, 4,5);
+        }).start();
     }
-    public synchronized void printStudentSynchronously(List<Student> list, int index1, int index2) {
-        System.out.println(list.get(index1));
-        System.out.println(list.get(index2));
+
+    public synchronized void printStudentSynchronously(List<Student> student, int index1, int index2) {
+        System.out.println(student.get(index1).getName());
+        System.out.println(student.get(index2).getName());
     }
 }
